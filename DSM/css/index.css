@@ -1,0 +1,90 @@
+/*System powstał na Wydziale Informatyki i Nauk o Żywności PWSIiP w Łomży */
+#nav_img
+{
+	width:20px;
+}
+
+.row hr 
+{
+  -moz-border-bottom-colors: none;
+  -moz-border-image: none;
+  -moz-border-left-colors: none;
+  -moz-border-right-colors: none;
+  -moz-border-top-colors: none;
+  border-color: #032f4a -moz-use-text-color #032f4a;
+  border-style: solid none;
+  border-width: 1px 0;
+  margin: 18px 0;
+}
+
+
+.row .card
+{
+	width: 100%;
+	border: 0px;
+}
+
+.container, .container .row
+{
+	border-style: solid; 
+	border-radius: 10px; 
+	border-color:#032f4a; 
+	border-width: 2px; 
+	margin: 1%;	
+}
+
+.row .col
+{
+	text-align: center;
+}
+
+.card-body
+{
+	text-align: left;
+}
+
+.chart
+{
+	padding: 5px;
+}
+
+@media only screen and (max-width: 400px) {
+  	#nav_img 
+	{
+    	width: 10px;
+  	}
+	
+	#brand
+	{
+		font-size: 80%;
+	}
+	
+	#dev-status
+	{
+		font-size: 60%;
+	}
+}
+
+@media only screen and (max-width: 1199px) {
+  	.card-title
+	{
+		font-size: 1.6rem;
+	}
+	
+	.card-body h2
+	{
+		font-size: 1.8rem;
+	}
+}
+
+@media only screen and (max-width: 991px) {
+  	.card-title
+	{
+		font-size: 1.2rem;
+	}
+	
+	.card-body h2
+	{
+		font-size: 1.3rem;
+	}	
+}
