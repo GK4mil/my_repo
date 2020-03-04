@@ -1,0 +1,18 @@
+﻿<Window x:Class="AudioMixerGawek.TagWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AudioMixerGawek"
+        mc:Ignorable="d"
+        Title="TagWindow" Height="360" Width="700" WindowStartupLocation="CenterOwner" MinWidth="700" MinHeight="360">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Image Name="image" Margin="10,10,19,17"/>
+        <TextBlock Name="Textbox1" Margin="10" TextWrapping="Wrap" Text="-" RenderTransformOrigin="-0.306,-0.045" Grid.Column="1"/>
+
+    </Grid>
+</Window>

@@ -1,0 +1,17 @@
+C:\Users\User\source\repos\GraphicsBrowserByGawek\GraphicsBrowserByGawek\bin\Debug\GraphicsBrowserByGawek.exe.config
+C:\Users\User\source\repos\GraphicsBrowserByGawek\GraphicsBrowserByGawek\bin\Debug\GraphicsBrowserByGawek.exe
+C:\Users\User\source\repos\GraphicsBrowserByGawek\GraphicsBrowserByGawek\bin\Debug\GraphicsBrowserByGawek.pdb
+C:\Users\User\source\repos\GraphicsBrowserByGawek\GraphicsBrowserByGawek\obj\Debug\GraphicsBrowserByGawek.csprojResolveAssemblyReference.cache
+C:\Users\User\source\repos\GraphicsBrowserByGawek\GraphicsBrowserByGawek\obj\Debug\MainWindow.g.cs
+C:\Users\User\source\repos\GraphicsBrowserByGawek\GraphicsBrowserByGawek\obj\Debug\App.g.cs
+C:\Users\User\source\repos\GraphicsBrowserByGawek\GraphicsBrowserByGawek\obj\Debug\GraphicsBrowserByGawek_MarkupCompile.cache
+C:\Users\User\source\repos\GraphicsBrowserByGawek\GraphicsBrowserByGawek\obj\Debug\GraphicsBrowserByGawek_MarkupCompile.lref
+C:\Users\User\source\repos\GraphicsBrowserByGawek\GraphicsBrowserByGawek\obj\Debug\MainWindow.baml
+C:\Users\User\source\repos\GraphicsBrowserByGawek\GraphicsBrowserByGawek\obj\Debug\GraphicsBrowserByGawek.g.resources
+C:\Users\User\source\repos\GraphicsBrowserByGawek\GraphicsBrowserByGawek\obj\Debug\GraphicsBrowserByGawek.Properties.Resources.resources
+C:\Users\User\source\repos\GraphicsBrowserByGawek\GraphicsBrowserByGawek\obj\Debug\GraphicsBrowserByGawek.csproj.GenerateResource.cache
+C:\Users\User\source\repos\GraphicsBrowserByGawek\GraphicsBrowserByGawek\obj\Debug\GraphicsBrowserByGawek.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\GraphicsBrowserByGawek\GraphicsBrowserByGawek\obj\Debug\GraphicsBrowserByGawek.exe
+C:\Users\User\source\repos\GraphicsBrowserByGawek\GraphicsBrowserByGawek\obj\Debug\GraphicsBrowserByGawek.pdb
+C:\Users\User\source\repos\GraphicsBrowserByGawek\GraphicsBrowserByGawek\obj\Debug\BrowserWindow.g.cs
+C:\Users\User\source\repos\GraphicsBrowserByGawek\GraphicsBrowserByGawek\obj\Debug\BrowserWindow.baml
