@@ -1,0 +1,10 @@
+C:\Users\User\Desktop\KAMIL_GAWEK_HTML_EDITOR\Notepad\bin\Debug\Notepad.exe.config
+C:\Users\User\Desktop\KAMIL_GAWEK_HTML_EDITOR\Notepad\bin\Debug\Notepad.exe
+C:\Users\User\Desktop\KAMIL_GAWEK_HTML_EDITOR\Notepad\bin\Debug\Notepad.pdb
+C:\Users\User\Desktop\KAMIL_GAWEK_HTML_EDITOR\Notepad\obj\Debug\HTML_EDITOR.csprojResolveAssemblyReference.cache
+C:\Users\User\Desktop\KAMIL_GAWEK_HTML_EDITOR\Notepad\obj\Debug\Notepad.Main.resources
+C:\Users\User\Desktop\KAMIL_GAWEK_HTML_EDITOR\Notepad\obj\Debug\Notepad.Properties.Resources.resources
+C:\Users\User\Desktop\KAMIL_GAWEK_HTML_EDITOR\Notepad\obj\Debug\HTML_EDITOR.csproj.GenerateResource.cache
+C:\Users\User\Desktop\KAMIL_GAWEK_HTML_EDITOR\Notepad\obj\Debug\HTML_EDITOR.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\KAMIL_GAWEK_HTML_EDITOR\Notepad\obj\Debug\Notepad.exe
+C:\Users\User\Desktop\KAMIL_GAWEK_HTML_EDITOR\Notepad\obj\Debug\Notepad.pdb

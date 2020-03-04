@@ -1,0 +1,10 @@
+C:\Users\User\source\repos\RSS\RSS\bin\Release\RSS.exe.config
+C:\Users\User\source\repos\RSS\RSS\bin\Release\RSS.exe
+C:\Users\User\source\repos\RSS\RSS\bin\Release\RSS.pdb
+C:\Users\User\source\repos\RSS\RSS\obj\Release\RSS.csprojResolveAssemblyReference.cache
+C:\Users\User\source\repos\RSS\RSS\obj\Release\RSS.Form1.resources
+C:\Users\User\source\repos\RSS\RSS\obj\Release\RSS.Properties.Resources.resources
+C:\Users\User\source\repos\RSS\RSS\obj\Release\RSS.csproj.GenerateResource.cache
+C:\Users\User\source\repos\RSS\RSS\obj\Release\RSS.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\RSS\RSS\obj\Release\RSS.exe
+C:\Users\User\source\repos\RSS\RSS\obj\Release\RSS.pdb

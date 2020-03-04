@@ -1,0 +1,11 @@
+C:\Users\User\Desktop\final\WindowsFormsApplication2\WindowsFormsApplication2\bin\Debug\WindowsFormsApplication2.exe
+C:\Users\User\Desktop\final\WindowsFormsApplication2\WindowsFormsApplication2\bin\Debug\WindowsFormsApplication2.pdb
+C:\Users\User\Desktop\final\WindowsFormsApplication2\WindowsFormsApplication2\obj\x86\Debug\LoginPanel.csprojResolveAssemblyReference.cache
+C:\Users\User\Desktop\final\WindowsFormsApplication2\WindowsFormsApplication2\obj\x86\Debug\WindowsFormsApplication2.AdminPanel.resources
+C:\Users\User\Desktop\final\WindowsFormsApplication2\WindowsFormsApplication2\obj\x86\Debug\WindowsFormsApplication2.LoginPanel.resources
+C:\Users\User\Desktop\final\WindowsFormsApplication2\WindowsFormsApplication2\obj\x86\Debug\WindowsFormsApplication2.Properties.Resources.resources
+C:\Users\User\Desktop\final\WindowsFormsApplication2\WindowsFormsApplication2\obj\x86\Debug\WindowsFormsApplication2.UserPanel.resources
+C:\Users\User\Desktop\final\WindowsFormsApplication2\WindowsFormsApplication2\obj\x86\Debug\LoginPanel.csproj.GenerateResource.cache
+C:\Users\User\Desktop\final\WindowsFormsApplication2\WindowsFormsApplication2\obj\x86\Debug\LoginPanel.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\final\WindowsFormsApplication2\WindowsFormsApplication2\obj\x86\Debug\WindowsFormsApplication2.exe
+C:\Users\User\Desktop\final\WindowsFormsApplication2\WindowsFormsApplication2\obj\x86\Debug\WindowsFormsApplication2.pdb
