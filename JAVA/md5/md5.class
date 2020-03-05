@@ -1,0 +1,434 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.RandomAccessFile;
+import java.util.Scanner;
+
+public class md5 {
+	static boolean SK = true;
+	static boolean K = true;
+	static int rej_a = 0x67452301;
+	static int rej_b = 0xEFCDAB89;
+	static int rej_c = 0x98BADCFE;
+	static int rej_d = 0x10325476; // stale niezalezne
+
+	static int[] rej = { 7, 12, 17, 22, 5, 9, 14, 20, 4, 11, 16, 23, 6, 10, 15,
+			21 };
+
+	static int[] T = new int[64];
+
+	byte[] generuj(byte[] dane) {
+		for (int i = 0; i < 64; i++)
+			T[i] = (int) (long) ((1L << 32) * Math.abs(Math.sin(i + 1))); // tablica
+																			// t
+		int dlugosc = dane.length;
+		int liczbaBl = ((dlugosc + 8) >>> 6) + 1;
+		int calkdl = liczbaBl << 6;
+		byte[] dbity = new byte[calkdl - dlugosc];
+		dbity[0] = (byte) 0x80;
+
+		long bdlugosci = (long) dlugosc << 3;
+		for (int i = 0; i < 8; i++) {
+			dbity[dbity.length - 8 + i] = (byte) bdlugosci;
+			bdlugosci >>>= 8;
+		}
+
+		int a = rej_a;
+		int b = rej_b;
+		int c = rej_c;
+		int d = rej_d;
+		int[] Buf = new int[16];
+		for (int i = 0; i < liczbaBl; i++) {
+			int index = i << 6;
+			for (int j = 0; j < 64; j++, index++)
+				Buf[j >>> 2] = ((int) ((index < dlugosc) ? dane[index]
+						: dbity[index - dlugosc]) << 24) | (Buf[j >>> 2] >>> 8);
+			int A = a;
+			int B = b;
+			int C = c;
+			int D = d;
+			for (int j = 0; j < 64; j++) {
+				int operacja = j >>> 4;
+				int f = 0;
+				int ind = j;
+				switch (operacja) {
+				case 0:
+					f = (b & c) | (~b & d);
+					break;
+
+				case 1:
+					f = (b & d) | (c & ~d);
+					ind = (ind * 5 + 1) & 0x0F;
+					break;
+
+				case 2:
+					f = b ^ c ^ d;
+					ind = (ind * 3 + 5) & 0x0F;
+					break;
+
+				case 3:
+					f = c ^ (b | ~d);
+					ind = (ind * 7) & 0x0F;
+					break;
+				}
+				int temp = b
+						+ Integer.rotateLeft(a + f + Buf[ind] + T[j],
+								rej[(operacja << 2) | (j & 3)]);
+				a = d;
+				d = c;
+				c = b;
+				b = temp;
+			}
+
+			a += A;
+			b += B;
+			c += C;
+			d += D;
+		}
+
+		byte[] md5 = new byte[16];
+		int count = 0;
+		for (int i = 0; i < 4; i++) {
+			int n = (i == 0) ? a : ((i == 1) ? b : ((i == 2) ? c : d));
+			for (int j = 0; j < 4; j++) {
+				md5[count++] = (byte) n;
+				n >>>= 8;
+			}
+		}
+		return md5;
+	}
+
+	String toHexString(byte[] b) {
+		String kodHex = "";
+		for (int i = 0; i < b.length; i++)
+			kodHex += String.format("%02X", b[i] & 0xFF);
+
+		return kodHex.toLowerCase();
+	}
+
+	static void caseone() throws FileNotFoundException {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Podaj lokalizacje katalogu: ");
+
+		String lok = "";
+
+		lok = sc.nextLine();
+		char[] lok1 = lok.toCharArray();
+		File file = new File(lok);
+		String[] lista = file.list();
+
+		String nazwaPliku = "";
+		for (int i = lok.length() - 1; i >= 0; i--) {
+			if (lok1[i] != '/' && lok1[i] != '\\')
+				nazwaPliku += lok1[i];
+			else
+				break;
+		}
+		lok1 = nazwaPliku.toCharArray();
+		nazwaPliku = "";
+
+		for (int i = lok1.length - 1; i >= 0; i--)
+			nazwaPliku += lok1[i];
+
+		if (nazwaPliku.equals(""))
+			nazwaPliku = "default";
+		File file1 = new File(lok + "//" + nazwaPliku + ".md5");
+		try {
+			file1.createNewFile();
+		} catch (IOException e) {
+			System.out.println("Nie mozna utowrzyc pliku skrotu !");
+		}
+		RandomAccessFile raf2 = new RandomAccessFile(file1, "rw");
+		for (int i = 0; i < lista.length; i++) {
+			try {
+				if (!lista[i].equals(nazwaPliku + ".md5")) {
+					File file3 = new File(lok + "//" + lista[i]);
+					RandomAccessFile raf1 = new RandomAccessFile(file3, "r");
+					byte[] temp = new byte[(int) raf1.length()];
+					raf1.readFully(temp);
+					md5 md5 = new md5();
+					raf1.close();
+					raf2.writeBytes(md5.toHexString(md5.generuj(temp)));
+					raf2.writeBytes("\n");
+				}
+
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		}
+		try {
+			raf2.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		//
+	}
+
+	static void casetwo() throws FileNotFoundException {
+		Scanner sc = new Scanner(System.in);
+		System.out
+				.println("Podaj lokalizacje pliku skrotu (wraz z nazwa i rozszerzeniem): ");
+
+		String lok = "";
+
+		lok = sc.nextLine();
+		char[] lok1 = lok.toCharArray();
+		File file = new File(lok);
+
+		String nazwaPliku = "";
+		for (int i = lok.length() - 1; i >= 0; i--) {
+			if (lok1[i] != '/' && lok1[i] != '\\')
+				nazwaPliku += lok1[i];
+			else
+				break;
+		}
+		lok1 = nazwaPliku.toCharArray();
+		nazwaPliku = "";
+
+		for (int i = lok1.length - 1; i >= 0; i--)
+			nazwaPliku += lok1[i];
+
+		System.out
+				.println("Gdzie chcesz zapisac plik skrotu? (Podaj lokalizacje inna niz lokalizacja pliku zrodlowego). ");
+
+		String lok2 = sc.nextLine();
+		File file1 = new File(lok2 + "//" + nazwaPliku);
+		try {
+			file1.createNewFile();
+		} catch (IOException e) {
+			System.out.println("Nie mozna utowrzyc pliku skrotu !");
+		}
+		RandomAccessFile raf2 = new RandomAccessFile(file1, "rw");
+
+		try {
+
+			File file3 = new File(lok);
+			RandomAccessFile raf1 = new RandomAccessFile(file3, "r");
+			byte[] temp = new byte[(int) raf1.length()];
+			raf1.readFully(temp);
+			md5 md5 = new md5();
+			raf1.close();
+			raf2.writeBytes(md5.toHexString(md5.generuj(temp)));
+			raf2.writeBytes("\n");
+
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		try {
+			raf2.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	static void casethree() throws IOException {
+		Scanner sc = new Scanner(System.in);
+		System.out
+				.println("Podaj lokalizacje pliku skrotu (wraz z nazwa i rozszerzeniem): ");
+		String wynik1="";
+		String lok = "";
+
+		lok = sc.nextLine();
+		File file = new File(lok);
+		try {
+
+			File file3 = new File(lok);
+			RandomAccessFile raf1 = new RandomAccessFile(file3, "r");
+			byte[] temp = new byte[(int) raf1.length()];
+			raf1.readFully(temp);
+			md5 md5 = new md5();
+			wynik1=md5.toHexString(md5.generuj(temp));
+			raf1.close();
+
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//////////////////////////////////////////////////////////////////////////////
+		System.out
+		.println("Podaj lokalizacje skrotu pliku skrotu katalogu (wraz z nazwa i rozszerzeniem): ");
+		String lok1=sc.nextLine();
+		File file1=new File(lok1);
+		RandomAccessFile raf2=new RandomAccessFile(file1,"r");
+		String wynik2="";
+		wynik2=raf2.readLine();
+		if(!(wynik2.equals(wynik1)))
+				SK=false;
+		raf2.close();
+		
+		
+		//////////////////////////////////////////////////////////////////////////////
+		/*********************************************************************/
+		
+		System.out.println("Podaj lokalizacje katalogu: ");
+
+		lok = "";
+
+		lok = sc.nextLine();
+		
+		file = new File(lok);
+		String[] lista = file.list();
+		char [] lok3=lok.toCharArray();
+		String nazwaPliku = "";
+		for (int i = lok3.length - 1; i >= 0; i--) {
+			if (lok3[i] != '/' && lok3[i] != '\\')
+				nazwaPliku += lok3[i];
+			else
+				break;
+		}
+		char[] nazwa=nazwaPliku.toCharArray();
+		nazwaPliku="";
+		
+		for(int i=nazwa.length-1;i>=0;i--)
+			nazwaPliku += nazwa[i];
+		if (nazwaPliku.equals(""))
+			nazwaPliku = "default";
+		int count=0;
+		for (int i = 0; i < lista.length; i++) {
+		if (!lista[i].equals(nazwaPliku + ".md5"))
+			count++;
+			
+		}
+		String[] temporary=new String[count];
+		for(int i=0;i<temporary.length;i++)
+			temporary[i]=" ";
+		File file6 = new File(lok+"//"+nazwaPliku+".md5");
+		RandomAccessFile raf4 = new RandomAccessFile(file6, "r");
+		for (int i = 0; i < lista.length; i++) {
+			try {
+				int j=0;
+				if (!lista[i].equals(nazwaPliku + ".md5")) 
+				{
+					
+					temporary[j]=raf4.readLine();
+					
+					j++;
+				}
+
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		}
+		try {
+			raf2.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		////////////////////////////////////////////////////////////////////////
+	
+		char[]lok2;
+		lok2 = lok.toCharArray();
+		file = new File(lok);
+		lista = file.list();
+
+		nazwaPliku = "";
+		for (int i = lok.length() - 1; i >= 0; i--) {
+			if (lok2[i] != '/' && lok2[i] != '\\')
+				nazwaPliku += lok2[i];
+			else
+				break;
+		}
+		lok2 = nazwaPliku.toCharArray();
+		nazwaPliku = "";
+
+		for (int i = lok2.length - 1; i >= 0; i--)
+			nazwaPliku += lok2[i];
+
+		if (nazwaPliku.equals(""))
+			nazwaPliku = "default";
+	
+		int count1=0;
+		int k=0;
+		for (int i = 0; i < lista.length; i++) 
+		{
+			if (!lista[i].equals(nazwaPliku + ".md5")) 
+				count1++;
+					
+		}			
+				
+					
+				
+		String[] temporary1=new String[count1];
+		for(int i=0;i<temporary1.length;i++)
+			temporary1[i]=" ";
+		for (int i = 0; i < lista.length; i++) {
+			try {
+				if (!lista[i].equals(nazwaPliku + ".md5")) 
+				{
+					File file3 = new File(lok + "//" + lista[i]);
+					RandomAccessFile raf1 = new RandomAccessFile(file3, "r");
+					byte[] temp = new byte[(int) raf1.length()];
+					raf1.readFully(temp);
+					md5 md5 = new md5();
+					
+					temporary1[k]=md5.toHexString(md5.generuj(temp));
+					
+					k++;
+					raf1.close();
+					
+				}
+
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		}
+		try {
+			raf2.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if(!(temporary.length==temporary1.length))
+			K=false;
+		else
+		{
+			
+		for(int i=0;i<temporary.length;i++)
+		{
+			if(temporary[i]==null)
+				temporary[i]=" ";
+		}
+		for(int i=0;i<temporary1.length;i++)
+		{
+			if(temporary1[i]==null)
+				temporary1[i]=" ";
+		}
+		for(int i=0;i<temporary.length;i++)
+		{
+			if(!temporary[i].equals(temporary1[i]))
+			{
+				K=false;
+				break;
+			}
+		}
+		}
+	}
+}

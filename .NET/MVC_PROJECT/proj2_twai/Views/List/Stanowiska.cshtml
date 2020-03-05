@@ -1,0 +1,69 @@
+﻿@model proj2_twai.Models.Stanowisko
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Strona główna listy</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+    <style>
+        .btn a {
+            color: white;
+            text-decoration: none
+        }
+
+        body {
+            background-color: #F1F1F1;
+        }
+    </style>
+</head>
+<body>
+    <div class="btn btn-success" style="margin:30px">
+        @Html.ActionLink("Dodaj", "SAdd")
+    </div>
+    <div class="btn btn-success" style="margin:30px">
+        @Html.ActionLink("Wróć", "Index")
+    </div>
+
+
+
+    @if (ViewBag.slista != null)
+    {
+        List<proj2_twai.Models.Stanowisko> lista = ViewBag.slista;
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nazwa stanowiska</th>
+                    <th>Skrócona nazwa</th>
+                    <th>Akcja</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (@proj2_twai.Models.Stanowisko a in lista)
+                {
+                    @:<tr>
+                        <td>@a.ID</td>
+                        <td>@a.NAZWA </td>
+                        <td> @a.SHORT</td>
+                        <td>
+                            
+                            @Html.ActionLink("Edytuj", "SEdit", "List", new { id = a.ID }, null)
+                            @Html.ActionLink("Usuń", "SDelete", "List", new { id = a.ID }, null)
+                         
+                        </td>
+
+                    }
+        </tbody>
+    </table>
+
+}
+</body>
+</html>

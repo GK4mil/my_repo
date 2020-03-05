@@ -1,0 +1,53 @@
+﻿@model proj2_twai.Models.Stanowisko
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Dodawanie</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+    <style>
+        .btn a {
+            color: white;
+            text-decoration: none
+        }
+
+        body {
+            background-color: #F1F1F1;
+        }
+    </style>
+</head>
+<body>
+    <div class="panel panel-success">
+        <div class="panel-heading text-center"><h4>Dodaj</h4></div>
+        <div class="panel-body">
+            @using (Html.BeginForm())
+            {
+                @Html.ValidationSummary()
+                <div class="form-group">
+                    <label>Nazwa:</label>
+                    @Html.TextBoxFor(x => x.NAZWA, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <label>Skrócona nazwa:</label>
+                    @Html.TextBoxFor(x => x.SHORT, new { @class = "form-control" })
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Dodaj</button>
+
+
+            }
+        </div>
+    </div>
+
+    <div class="btn btn-danger">
+        @Html.ActionLink("Powrót", "Stanowiska")
+    </div>
+
+</body>
+</html>

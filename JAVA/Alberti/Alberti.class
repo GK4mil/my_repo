@@ -1,0 +1,154 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.RandomAccessFile;
+import java.util.Random;
+import java.util.Scanner;
+
+public class Alberti {
+	public static byte[][] generujtab() {
+		byte[][] tab = new byte[256][256];
+		for (int i = 0; i < 256; i++) {
+			for (int j = 0; j < 256; j++) {
+				tab[i][j] = (byte) ((i + j) % 256);
+			}
+		}
+		return tab;
+	}
+	public static int generuj()
+	{
+		Random r=new Random();
+		return r.nextInt(127);
+	}
+	public static void szyfruj(byte p, byte x, byte y, byte[][] tab, String lokalizacja, String doszyfr) {
+		File file = new File(lokalizacja + "\\encrypted\\" + doszyfr);
+		try {
+			file.createNewFile();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		RandomAccessFile raf1 = null;
+		try {
+			raf1 = new RandomAccessFile(file, "rw");
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		// generowanie pliku po szyfrowaniu oraz jego otworzenie
+		RandomAccessFile raf2 = null;
+		File file1 = new File(lokalizacja + "\\" + doszyfr);
+		try {
+			raf2 = new RandomAccessFile(file1, "rw");
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		// otwarcie pliku do szyfrowania
+		// *******************************
+		// Szyfrowanie
+		int dl_bloku=y;
+		int przes=x;
+		int poz=p;
+		
+		try {
+			for(int i=0;i<raf2.length();i++)
+			{
+				int col=0;
+				byte tym_plik=0;
+				tym_plik=raf2.readByte();
+				for(int j=0;j<256;j++)
+				{
+					if(tym_plik==tab[0][j])
+					{
+						col=j;
+						break;
+					}
+				}
+				raf1.write(tab[poz][col]);
+				dl_bloku--;
+				poz+=przes;
+				if(dl_bloku==0)
+				{
+					przes=generuj();
+					dl_bloku=generuj();
+					raf1.write((byte)przes);
+					raf1.write((byte)dl_bloku);
+				}
+				if(poz>255)
+					poz%=256;
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+	}
+
+	public static void deszyfruj(byte p, byte x, byte y, byte[][] tab, String lokalizacja, String odszyfr) {
+		File file = new File(lokalizacja + "\\decrypted\\" + odszyfr);
+		try {
+			file.createNewFile();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		RandomAccessFile raf1 = null;
+		try {
+			raf1 = new RandomAccessFile(file, "rw");
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		// generowanie pliku po deszyfrowaniu oraz jego otworzenie
+
+		File file1 = new File(lokalizacja + "\\" + odszyfr);
+		RandomAccessFile raf2 = null;
+		try {
+			raf2 = new RandomAccessFile(file1, "rw");
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		// otwarcie pliku do deszyfrowania
+
+		// deSzyfrowanie
+		int dl_bloku=y;
+		int przes=x;
+		int poz=p;
+		int iteracja=0;
+		try {
+			for(int i=0;i<raf2.length()-iteracja;i++)
+			{
+				int col=0;
+				byte tym_plik=0;
+				tym_plik=raf2.readByte();
+				for(int j=0;j<256;j++)
+				{
+					if(tym_plik==tab[poz][j])
+					{
+						col=j;
+						break;
+					}
+				}
+				raf1.write(tab[0][col]);
+				dl_bloku--;
+				poz+=przes;
+				if(dl_bloku==0)
+				{
+					przes=(int)raf2.readByte();
+					dl_bloku=raf2.readByte();
+					iteracja+=2;
+				}
+				if(poz>255)
+					poz%=256;
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+}
+

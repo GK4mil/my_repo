@@ -1,0 +1,130 @@
+public class Cezar {
+
+	String szyfruj(String wiad, int k) {
+		char x[] = wiad.toCharArray();
+
+		for (int i = 0; i < x.length; i++) {
+			int p = 0;
+			int c1 = k % 16;
+			int c2 = k % 10;
+			int c3 = k % 7;
+			int c4 = k % 26;
+			int c5 = k % 6;
+			int c6 = k % 4;
+			int n = x[i];
+
+			if ((n > 31) && (n < 48) && ((n + c1) > 47)) {
+				p = (n + c1) % 48;
+				x[i] = (char) (32 + p);//
+
+			} else if ((n > 47) && (n < 58) && ((n + c2) > 57)) {
+				p = (n + c2) % 58;
+				x[i] = (char) (48 + p);//
+
+			} else if ((n > 57) && (n < 65) && ((n + c3) > 64)) {
+				p = (n + c3) % 65;
+				x[i] = (char) (58 + p);///
+
+			} else if ((n > 64) && (n < 91) && ((n + c4) > 90)) {
+				p = (n + c4) % 91;
+				x[i] = (char) (65 + p);//
+
+			} else if ((n > 90) && (n < 97) && ((n + c5) > 96)) {
+				p = (n + c5) % 97;
+				x[i] = (char) (91 + p); ///
+
+			} else if ((n > 96) && (n < 123) && ((n + c4) > 122)) {
+				p = (n + c4) % 123;
+				x[i] = (char) (97 + p);///
+			} else if ((n > 122) && (n < 127) && ((n + c6) > 126)) {
+				p = (n + c6) % 127;
+				x[i] = (char) (123 + p);///
+			} else {
+				if ((n > 31) && (n < 48))
+					x[i] = (char) (n + c1);//
+				else if ((n > 47) && (n < 58))
+					x[i] = (char) (n + c2);//
+				else if ((n > 57) && (n < 65))
+					x[i] = (char) (n + c3);///
+				else if ((n > 64) && (n < 91))
+					x[i] = (char) (n + c4);///
+				else if ((n > 90) && (n < 97))
+					x[i] = (char) (n + c5);///
+				else if ((n > 96) && (n < 123))
+					x[i] = (char) (n + c4);///
+				else if ((n > 122) && (n < 127))
+					x[i] = (char) (n + c6);///
+			}
+
+		}
+
+		return new String(x);
+	}
+
+	//////////////////////////////////////////////////////////////
+	// dziala^^^^^^^^^^
+	//////////////////////////////////////////
+	String deszyfruj(String wiad, int k) {
+		char x[] = wiad.toCharArray();
+
+		for (int i = 0; i < x.length; i++) {
+			
+			int p = 0;
+			int c1 = k % 16;
+			int c2 = k % 10;
+			int c3 = k % 7;
+			int c4 = k % 26;
+			int c5 = k % 6;
+			int c6 = k % 4;
+			int n = x[i];
+
+			if ((n > 31) && (n < 48) && ((n - c1) < 32)) {
+				p = n - 32;
+				x[i] = (char) (48 - (c1 - p));////
+
+			} else if ((n > 47) && (n < 58) && ((n - c2) < 48)) {
+				p = n - 48;
+				x[i] = (char) (58 - (c2 - p)); ///
+
+			} else if ((n > 57) && (n < 65) && ((n - c3) < 58)) {
+				p = n - 58;
+				x[i] = (char) (65 - (c3 - p));///
+			} else if ((n > 64) && (n < 91) && ((n - c4) < 65)) {
+				p = n - 65;
+				x[i] = (char) (91 - (c4 - p)); //
+
+			} else if ((n > 90) && (n < 97) && ((n - c5) < 91)) {
+				p = n - 91;
+				x[i] = (char) (97 - (c5 - p));//
+
+			} else if ((n > 96) && (n < 123) && ((n - c4) < 97)) {
+				p = n - 97;
+				x[i] = (char) (123 - (c4 - p));//
+
+			} else if ((n > 122) && (n < 127) && ((n - c6) < 123)) {
+				p = n - 123;
+				x[i] = (char) (127 - (c6 - p));//
+
+			} else {
+				if ((n > 31) && (n < 48))
+					x[i] = (char) (n - c1);//
+				else if ((n > 47) && (n < 58))
+					x[i] = (char) (n - c2);//
+				else if ((n > 57) && (n < 65))
+					x[i] = (char) (n - c3);//
+				else if ((n > 64) && (n < 91))
+					x[i] = (char) (n - c4);//
+				else if ((n > 90) && (n < 97))
+					x[i] = (char) (n - c5);//
+				else if ((n > 96) && (n < 123))
+					x[i] = (char) (n - c4);//
+				else if ((n > 122) && (n < 127))
+					x[i] = (char) (n - c6);//
+			}
+		}
+
+		return new String(x);
+
+	}
+}
+// k to liczba przesuniec

@@ -1,0 +1,161 @@
+import java.io.*;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String args[]) {
+    	byte[][] vin=Byt.generujVin();
+        Scanner lok = new Scanner(System.in);
+        System.out.println("Wpisz 1, aby szyfrowac\nlub 2, aby deszyfrowac  ...");
+        
+        Scanner lok1 = new Scanner(System.in);
+        int choice = lok1.nextInt();
+
+        System.out.println("Podaj lokalizacje folderu ...");
+        String lokalizacja = lok.nextLine(); // pobranie lokalizacji katalogu
+        
+        File katalog = new File(lokalizacja);
+        String[] fileList = katalog.list();
+        
+       
+        
+        
+        
+        try {
+        	System.out.println("Zawartosc podanego katalogu: ");
+            
+            for (int i = 0; i < fileList.length; i++) { // do odczytu, wyswietla
+                // zawartosc
+                System.out.println(i+1+". "+fileList[i]);
+            }
+            System.out.println("Wpisz nr pliku, ktory chcesz zaszyfrowac ");
+
+        } catch (NullPointerException e) {
+            System.out.println("Katalog nie istnieje");
+            return;
+            
+        }
+      
+        int j=lok.nextInt(); //wybranie pliku z listy
+        
+        
+
+        // wyswietlenie katalogu
+        Byt.generujKlucz(lokalizacja+"\\binary_key"); //generowanie klucza binarnego
+        byte[] klucz=Byt.odczytajKlucz(lokalizacja); //odczytanie klucza i zapisanie do tablicy
+        
+        switch (choice)
+        {
+        case 1:
+        	File encrypt=new File(lokalizacja+"\\encrypted");
+        	encrypt.mkdir(); // tworzenie pliku z zaszyfrowanym plikiem
+        	Byt.szyfruj(klucz,vin,lokalizacja,fileList[j-1]);
+        	break;
+        case 2:
+        	File decrypt=new File(lokalizacja+"\\decrypted");
+        	decrypt.mkdir(); // tworzenie pliku z odszyfrowanym plikiem
+        	Byt.deszyfruj(klucz,vin,lokalizacja,fileList[j-1]);
+        
+        }
+        
+        
+       
+       
+        
+        
+        
+        
+        /*
+
+        for (int i = 0; i < fileList.length; i++) 
+        {
+        	czy_nowy_plik=true;
+            File file = new File(lokalizacja + "\\" + fileList[i]);
+            System.out.println("Odczyt zawartosci pliku o nazwie: " + fileList[i]);
+            RandomAccessFile raf = null;
+
+            try {
+                raf = new RandomAccessFile(file, "r");
+            } catch (FileNotFoundException e) {
+                System.out.println("Plik nie istnieje");
+                return;
+            }
+
+            String line = "";
+            String[] tablicaTymczasowa = null;
+            
+            int l;
+
+            try {
+                j = 0;
+                while ((line = raf.readLine()) != null) {
+                    j++;
+
+                    System.out.println(line);
+                }
+                raf.close();
+
+                try {
+                    raf = new RandomAccessFile(file, "r");
+                } catch (FileNotFoundException e) {
+                    System.out.println("Plik nie istnieje");
+                    return;
+                }
+                
+                tablicaTymczasowa = new String[j];
+                System.out.println("Po przeksztalceniu:");
+                l = 0;
+                
+                while ((line = raf.readLine()) != null) 
+                {
+                    tablicaTymczasowa[l] = line;
+                    if (choice == 1)
+                    	
+                        tablicaTymczasowa[l] = c.szyfruj(tablicaTymczasowa[l], w_poczatkowa,w_przesuniecia,dl_bloku);
+                    if (choice == 2)
+                        tablicaTymczasowa[l] = c.deszyfruj(tablicaTymczasowa[l], w_poczatkowa,w_przesuniecia,dl_bloku);
+                  
+                    System.out.println(tablicaTymczasowa[l]);
+
+                    l++;
+                }
+                
+                raf.close();
+                
+            } catch (IOException e) {
+                System.out.println("Błąd");
+            }
+            
+            file.delete();
+            try {
+                file.createNewFile();
+            } catch (IOException e) {
+
+                e.printStackTrace();
+            }
+
+            try {
+            	
+                raf = new RandomAccessFile(file, "rw");
+            } catch (FileNotFoundException e) {
+                System.out.println("Nie można utworzyć pliku.");
+                return;
+            }
+
+            try {
+            	
+                for (int z = 0; z < j; z++) {
+                    raf.writeBytes(tablicaTymczasowa[z]);
+                }
+
+                raf.close();
+            }
+
+            catch (IOException e) {
+                System.out.print("\nBłąd zapisu");
+                return;
+            }
+
+        }
+        */
+    }
+}

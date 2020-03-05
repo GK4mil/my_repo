@@ -1,0 +1,78 @@
+﻿@model proj2_twai.Models.User
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Strona główna listy</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+    <style>
+        .btn a {
+            color: white;
+            text-decoration: none
+        }
+
+        body {
+            background-color: #F1F1F1;
+        }
+    </style>
+</head>
+<body>
+    <div class="btn btn-success" style="margin:30px">
+        @Html.ActionLink("Dodaj", "Add")
+    </div>
+    <div class="btn btn-success" style="margin:30px">
+        @Html.ActionLink("Wróć", "Index")
+    </div>
+
+
+
+    @if (ViewBag.lista != null)
+    {
+        List<proj2_twai.Models.User> lista = ViewBag.lista;
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Imię i nazwisko</th>
+                    <th>Wiek</th>
+                    <th>Akcja</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (@proj2_twai.Models.User a in lista)
+                {
+                   @:<tr>
+                        if (a.WIEK<18)
+                        {
+  
+                        @:<tr style="background-color:yellow">
+                        
+                        }
+                    
+                        <td>@a.ID</td>
+                        <td>@a.IMIE @a.NAZWISKO</td>
+                        <td> @a.WIEK</td>
+                        <td>
+
+                            @Html.ActionLink("Edytuj", "Edit", "List", new { id = a.ID }, null)
+                            @Html.ActionLink("Usuń", "Delete", "List", new { id = a.ID }, null)
+                          
+                        </td>
+
+                    }
+        </tbody>
+    </table>
+
+
+
+}
+</body>
+</html>

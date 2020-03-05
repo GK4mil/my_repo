@@ -1,0 +1,63 @@
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) throws IOException {
+		int choice=1;
+		while (choice != 0) {
+			System.out.println("Wybierz opcję:");
+			System.out.println("1. Generuj skrot katalogu.");
+			System.out.println("2. Generuj skrot pliku skrotu katalogu.");
+			System.out.println("3. Sprawdz katalog na podstawie skrotu pliku skrotu katalogu. ");
+			System.out.println("\n0. Zakoncz");
+			Scanner sc = new Scanner(System.in);
+			choice = sc.nextInt();
+			
+			
+			switch(choice)
+			{
+			case 0:
+				System.out.println("Zakonczono prace programu");
+				
+				break;
+			case 1:
+				md5.caseone();
+				System.out.println("\nUtworzono pomyslnie!\n");
+				break;
+			case 2:
+				md5.casetwo();
+				System.out.println("\nUtworzono pomyslnie!\n");
+				
+			
+				break;
+			case 3:
+				md5.SK=true;
+				md5.K=true;
+				md5.casethree();
+				System.out.println();
+				if(!md5.SK&&!md5.K)
+					System.out.println("Zmieniony plik skrotu katalogu");
+				else if(!md5.SK&&md5.K)
+					System.out.println("Zmieniona zawartosc katalogu i wygenerowany nowy plik skrotu katalogu");
+				else if(md5.SK&&!md5.K)
+					System.out.println("Zmiana w plikach");
+				else
+					System.out.println("Wszystko jest w porzadku");
+				System.out.println();
+				break;
+				default:
+					System.out.println("\nZla opcja, wybierz ponownie.\n");
+					break;
+				
+			
+			
+			
+			}
+			
+		}
+
+	}
+
+}

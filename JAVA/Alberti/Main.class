@@ -1,0 +1,75 @@
+import java.io.*;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String args[]) {
+    	byte[][] tab=Alberti.generujtab();
+        Scanner lok = new Scanner(System.in);
+        System.out.println("Wpisz 1, aby szyfrowac\nlub 2, aby deszyfrowac  ...");
+        
+        Scanner lok1 = new Scanner(System.in);
+        int choice = lok1.nextInt();
+
+        System.out.println("Podaj lokalizacje folderu ...");
+        String lokalizacja = lok.nextLine(); // pobranie lokalizacji katalogu
+        
+        File katalog = new File(lokalizacja);
+        String[] fileList = katalog.list();
+        
+       
+        
+        
+        
+        try {
+        	System.out.println("Zawartosc podanego katalogu: ");
+            
+            for (int i = 0; i < fileList.length; i++) { // do odczytu, wyswietla
+                // zawartosc
+                System.out.println(i+1+". "+fileList[i]);
+            }
+            System.out.println("Wpisz nr pliku, ktory chcesz zaszyfrowac ");
+
+        } catch (NullPointerException e) {
+            System.out.println("Katalog nie istnieje");
+            return;
+            
+        }
+      
+        int j=lok.nextInt(); //wybranie pliku z listy
+        // wyswietlenie katalogu
+        int x=0, y=0, p=0;
+        System.out.println("Podaj wartosc poczatkowa kola: ");
+        p=lok1.nextInt();
+        System.out.println("Podaj wartosc przesuniecia w pierwszym bloku: ");
+        x=lok1.nextInt();
+        System.out.println("Podaj wartosc dlugosci pierwszego bloku: ");
+        y=lok1.nextInt();
+
+       
+        
+       
+        
+        switch (choice)
+        {
+        case 1:
+        	File encrypt=new File(lokalizacja+"\\encrypted");
+        	encrypt.mkdir(); // tworzenie pliku z zaszyfrowanym plikiem
+        	Alberti.szyfruj((byte)p,(byte)x,(byte)y,tab,lokalizacja,fileList[j-1]);
+        	break;
+        case 2:
+        	File decrypt=new File(lokalizacja+"\\decrypted");
+        	decrypt.mkdir(); // tworzenie pliku z odszyfrowanym plikiem
+        	Alberti.deszyfruj((byte)p,(byte)x,(byte)y,tab,lokalizacja,fileList[j-1]);
+        
+        }
+        
+        
+       
+       
+        
+        
+        
+        
+    
+    }
+}

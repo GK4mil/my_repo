@@ -1,0 +1,36 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Strona główna listy</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+    <style>
+        .btn a {
+            color: white;
+            text-decoration: none
+        }
+
+        body {
+            background-color: #F1F1F1;
+        }
+    </style>
+</head>
+<body style="align-content:center">
+    <div class="btn btn-success" style="margin:30px">
+        @Html.ActionLink("Lista Pracownikow", "Employee")
+    </div>
+    <br />
+    <div class="btn btn-success" style="margin:30px">
+        @Html.ActionLink("Lista Stanowisk", "Stanowiska")
+    </div>
+
+   
+</body>
+</html>
