@@ -181,3 +181,14 @@ C:\Users\User\Desktop\VideoPlayer_GAWEK\WpfApp1\bin\Debug\NReco.dll
 C:\Users\User\Desktop\VideoPlayer_GAWEK\WpfApp1\bin\Debug\NReco.VideoConverter.dll
 C:\Users\User\Desktop\VideoPlayer_GAWEK\WpfApp1\bin\Debug\NReco.xml
 C:\Users\User\Desktop\VideoPlayer_GAWEK\WpfApp1\bin\Debug\NReco.VideoConverter.xml
+C:\Users\Kamil\Documents\GitHub\my_repo\.NET\VideoPlayer\WpfApp1\obj\Debug\WpfApp1.csproj.AssemblyReference.cache
+C:\Users\Kamil\Documents\GitHub\my_repo\.NET\VideoPlayer\WpfApp1\obj\Debug\Interop.WMPLib.dll
+C:\Users\Kamil\Documents\GitHub\my_repo\.NET\VideoPlayer\WpfApp1\obj\Debug\WpfApp1.csproj.ResolveComReference.cache
+C:\Users\Kamil\Documents\GitHub\my_repo\.NET\VideoPlayer\WpfApp1\obj\Debug\BrowserWindow.g.cs
+C:\Users\Kamil\Documents\GitHub\my_repo\.NET\VideoPlayer\WpfApp1\obj\Debug\MainWindow.g.cs
+C:\Users\Kamil\Documents\GitHub\my_repo\.NET\VideoPlayer\WpfApp1\obj\Debug\PlaylistWindow.g.cs
+C:\Users\Kamil\Documents\GitHub\my_repo\.NET\VideoPlayer\WpfApp1\obj\Debug\App.g.cs
+C:\Users\Kamil\Documents\GitHub\my_repo\.NET\VideoPlayer\WpfApp1\obj\Debug\WpfApp1_MarkupCompile.cache
+C:\Users\Kamil\Documents\GitHub\my_repo\.NET\VideoPlayer\WpfApp1\obj\Debug\WpfApp1_MarkupCompile.lref
+C:\Users\Kamil\Documents\GitHub\my_repo\.NET\VideoPlayer\WpfApp1\obj\Debug\WpfApp1.exe
+C:\Users\Kamil\Documents\GitHub\my_repo\.NET\VideoPlayer\WpfApp1\obj\Debug\WpfApp1.pdb
