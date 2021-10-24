@@ -111,7 +111,7 @@ namespace WpfApp1
         {
             OpenFileDialog d = new OpenFileDialog();
             d.Multiselect = true;
-            d.Filter = "VIDEO (*.mp4,*.avi)|*.mp4;*.avi";
+            d.Filter = "VIDEO (*.mp4,*.avi, *.mkv)|*.mp4;*.avi;*.mkv";
             d.ShowDialog();
             if (d.CheckPathExists)
             {
