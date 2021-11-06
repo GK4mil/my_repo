@@ -30,3 +30,4 @@ C:\Users\Kamil\Documents\GitHub\my_repo\.NET\VideoPlayer\WpfApp1\obj\Debug\Video
 C:\Users\Kamil\Documents\GitHub\my_repo\.NET\VideoPlayer\WpfApp1\obj\Debug\VideoPlayer.csproj.CopyComplete
 C:\Users\Kamil\Documents\GitHub\my_repo\.NET\VideoPlayer\WpfApp1\obj\Debug\WpfApp1.exe
 C:\Users\Kamil\Documents\GitHub\my_repo\.NET\VideoPlayer\WpfApp1\obj\Debug\WpfApp1.pdb
+C:\Users\Kamil\Documents\GitHub\my_repo\.NET\VideoPlayer\WpfApp1\obj\Debug\VideoPlayer.csproj.AssemblyReference.cache

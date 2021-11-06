@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace WpfApp1
+namespace VideoPlayerGawek
 {
     public class Association
     {

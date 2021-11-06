@@ -21,7 +21,7 @@ using System.Windows.Shapes;
 using System.Windows.Threading;
 
 
-namespace WpfApp1
+namespace VideoPlayerGawek
 {
     /// <summary>
     /// Logika interakcji dla klasy MainWindow.xaml
@@ -59,6 +59,7 @@ namespace WpfApp1
             Shuffle_button.Content = "Shuffle OFF";
             mediaelement.LoadedBehavior = MediaState.Manual;
             mediaelement.Volume = VolumeSlider.Value;
+            
             
         
         }

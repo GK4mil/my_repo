@@ -16,7 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using WMPLib;
 
-namespace WpfApp1
+namespace VideoPlayerGawek
 {
     /// <summary>
     /// Logika interakcji dla klasy PlaylistWindow.xaml

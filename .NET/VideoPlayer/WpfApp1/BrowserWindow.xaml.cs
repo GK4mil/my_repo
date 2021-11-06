@@ -18,7 +18,7 @@ using Microsoft.WindowsAPICodePack.Shell;
 using System.Windows.Forms;
 using System.Drawing.Imaging;
 
-namespace WpfApp1
+namespace VideoPlayerGawek
 {
     /// <summary>
     /// Logika interakcji dla klasy BrowserWindow.xaml
